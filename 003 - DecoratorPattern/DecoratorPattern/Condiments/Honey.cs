@@ -16,7 +16,23 @@ namespace DecoratorPattern.Condiments
 
         public override double cost()
         {
-            return 0.60 + baseBeverage.cost();
+            double extraCost = 0.0;
+            switch (this.Size)
+            {
+                case Size.TALL:
+                    extraCost = 0.60;
+                    break;
+                case Size.GRANDE:
+                    extraCost = 0.75;
+                    break;
+                case Size.VENDI:
+                    extraCost = 0.90;
+                    break;
+                default:
+                    extraCost = 0.60;
+                    break;
+            }
+            return extraCost + baseBeverage.cost();
         }
 
         public override string GetDescription()

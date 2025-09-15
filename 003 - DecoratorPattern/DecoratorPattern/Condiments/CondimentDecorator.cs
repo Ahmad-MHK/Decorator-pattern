@@ -9,7 +9,12 @@ namespace DecoratorPattern.Condiments
 {
     internal abstract class CondimentDecorator : Beverage
     {
-        public abstract override string GetDescription();
+        protected CondimentDecorator(Beverage beverage)
+        {
+            this.baseBeverage = beverage;
+            this.Size = beverage.Size;
+        }
 
+        public abstract override string GetDescription();
     }
 }

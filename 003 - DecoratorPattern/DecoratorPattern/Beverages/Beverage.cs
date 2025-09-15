@@ -26,6 +26,25 @@ namespace DecoratorPattern.Beverages
             return description;
         }
 
-        public abstract double cost();
+        public virtual double cost()
+        {
+            double baseCost;
+            switch (Size)
+            {
+                case Size.TALL:
+                    baseCost = 1.50;
+                    break;
+                case Size.GRANDE:
+                    baseCost = 2.00;
+                    break;
+                case Size.VENDI:
+                    baseCost = 2.50;
+                    break;
+                default:
+                    baseCost = 1.50;
+                    break;
+            }
+            return baseCost;
+        }
     }
 }

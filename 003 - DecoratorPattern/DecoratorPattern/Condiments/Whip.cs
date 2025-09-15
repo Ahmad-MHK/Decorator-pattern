@@ -20,16 +20,19 @@ namespace DecoratorPattern.Condiments
             switch (this.Size)
             {
                 case Size.TALL:
-                    extraCost = 0.05;
+                    extraCost = 0.10;
                     break;
                 case Size.GRANDE:
-                    extraCost = 0.07;
-                    break;  
+                    extraCost = 0.15;
+                    break;
                 case Size.VENDI:
+                    extraCost = 0.20;
+                    break;
+                default:
                     extraCost = 0.10;
                     break;
             }
-            return extraCost + 0.10 + baseBeverage.cost();
+            return extraCost + baseBeverage.cost();
         }
 
         public override string GetDescription()
