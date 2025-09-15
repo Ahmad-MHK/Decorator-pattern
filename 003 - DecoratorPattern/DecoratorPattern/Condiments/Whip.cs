@@ -9,10 +9,7 @@ namespace DecoratorPattern.Condiments
 {
     internal class Whip : CondimentDecorator
     {
-        public Whip(Beverage beverage)
-        {
-            this.baseBeverage = beverage;
-        }
+        public Whip(Beverage beverage) : base(beverage) {}
 
         public override double cost()
         {

@@ -9,10 +9,7 @@ namespace DecoratorPattern.Condiments
 {
     internal class Cream : CondimentDecorator
     {
-        public Cream(Beverage beverage)
-        {
-            this.baseBeverage = beverage;
-        }
+        public Cream(Beverage beverage) : base(beverage) {}
 
         public override double cost()
         {
