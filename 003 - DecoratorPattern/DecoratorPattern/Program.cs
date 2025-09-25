@@ -1,5 +1,6 @@
-﻿using DecoratorPattern.Beverages;
+using DecoratorPattern.Beverages;
 using DecoratorPattern.Condiments;
+using DecoratorPattern.Factories;
 
 namespace DecoratorPattern
 {
@@ -7,154 +8,156 @@ namespace DecoratorPattern
     {
         static void Main(string[] args)
         {
+            IBeverageFactory factory = new BeverageFactory();
+
             // Espresso
-            Beverage espresso = new Espresso();
+            Beverage espresso = factory.CreateBeverage(BeverageType.Espresso);
             espresso.Size = Size.GRANDE;
             PrintBeverage(espresso);
 
             // Doppio
-            Beverage doppio = new Espresso();
+            Beverage doppio = factory.CreateBeverage(BeverageType.Espresso);
             doppio.Size = Size.GRANDE;
-            doppio = new Espresso(doppio);
+            doppio = factory.CreateBeverage(BeverageType.Espresso, doppio);
             PrintBeverage(doppio);
 
             // Lungo
-            Beverage lungo = new Espresso();
-            lungo = new Water(lungo);
+            Beverage lungo = factory.CreateBeverage(BeverageType.Espresso);
+            lungo = factory.CreateBeverage(BeverageType.Water, lungo);
             lungo.Size = Size.TALL;
             PrintBeverage(lungo);
 
             // Macchiato
-            Beverage macchiato = new Espresso();
+            Beverage macchiato = factory.CreateBeverage(BeverageType.Espresso);
             macchiato.Size = Size.VENDI;
             macchiato = new MilkFoam(macchiato);
             PrintBeverage(macchiato);
 
             // Corretta
-            Beverage corretta = new Espresso();
-            corretta = new Liqour(corretta); 
+            Beverage corretta = factory.CreateBeverage(BeverageType.Espresso);
+            corretta = new Liqour(corretta);
             PrintBeverage(corretta);
 
             // Con Panna
-            Beverage conPanna = new Espresso();
+            Beverage conPanna = factory.CreateBeverage(BeverageType.Espresso);
             conPanna.Size = Size.VENDI;
             conPanna = new Whip(conPanna);
             PrintBeverage(conPanna);
 
             // Cappuccino
-            Beverage cappuccino = new Espresso();
+            Beverage cappuccino = factory.CreateBeverage(BeverageType.Espresso);
             cappuccino.Size = Size.GRANDE;
             cappuccino = new SteamedMilk(cappuccino);
             cappuccino = new MilkFoam(cappuccino);
             PrintBeverage(cappuccino);
 
             // Americano
-            Beverage americano = new Espresso();
+            Beverage americano = factory.CreateBeverage(BeverageType.Espresso);
             americano.Size = Size.VENDI;
-            americano = new Water(americano);
-            americano = new Water(americano);
+            americano = factory.CreateBeverage(BeverageType.Water, americano);
+            americano = factory.CreateBeverage(BeverageType.Water, americano);
             PrintBeverage(americano);
 
-            // Caffé Latte
-            Beverage caffeLatte = new Espresso();
+            // Caffe Latte
+            Beverage caffeLatte = factory.CreateBeverage(BeverageType.Espresso);
             caffeLatte = new SteamedMilk(caffeLatte);
             caffeLatte = new SteamedMilk(caffeLatte);
             caffeLatte = new MilkFoam(caffeLatte);
             PrintBeverage(caffeLatte);
 
             // Flat White
-            Beverage flatWhite = new Espresso();
+            Beverage flatWhite = factory.CreateBeverage(BeverageType.Espresso);
             flatWhite.Size = Size.GRANDE;
             flatWhite = new SteamedMilk(flatWhite);
             flatWhite = new SteamedMilk(flatWhite);
             PrintBeverage(flatWhite);
 
             // Romana
-            Beverage romana = new Espresso();
+            Beverage romana = factory.CreateBeverage(BeverageType.Espresso);
             romana.Size = Size.VENDI;
             romana = new Lemon(romana);
             PrintBeverage(romana);
 
             // Marocchino
-            Beverage marocchino = new Espresso();
-            marocchino = new Chocolate(marocchino);
+            Beverage marocchino = factory.CreateBeverage(BeverageType.Espresso);
+            marocchino = factory.CreateBeverage(BeverageType.Chocolate, marocchino);
             marocchino = new MilkFoam(marocchino);
             PrintBeverage(marocchino);
 
             // Mocha
-            Beverage mocha = new Espresso();
+            Beverage mocha = factory.CreateBeverage(BeverageType.Espresso);
             mocha.Size = Size.GRANDE;
-            mocha = new Chocolate(mocha);
+            mocha = factory.CreateBeverage(BeverageType.Chocolate, mocha);
             mocha = new SteamedMilk(mocha);
             mocha = new Whip(mocha);
             PrintBeverage(mocha);
 
             // Bicerin
-            Beverage bicerin = new Espresso();
+            Beverage bicerin = factory.CreateBeverage(BeverageType.Espresso);
             bicerin.Size = Size.VENDI;
-            bicerin = new BlackChocolate(bicerin); 
-            bicerin = new WhiteChocolate(bicerin); 
+            bicerin = new BlackChocolate(bicerin);
+            bicerin = new WhiteChocolate(bicerin);
             bicerin = new Whip(bicerin);
             PrintBeverage(bicerin);
 
             // Breve
-            Beverage breve = new Espresso();
+            Beverage breve = factory.CreateBeverage(BeverageType.Espresso);
             breve = new MilkFoam(breve);
-            breve = new HalfMilk(breve); 
+            breve = new HalfMilk(breve);
             PrintBeverage(breve);
 
             // Raf coffee
-            Beverage rafCoffee = new Espresso();
+            Beverage rafCoffee = factory.CreateBeverage(BeverageType.Espresso);
             rafCoffee.Size = Size.GRANDE;
-            rafCoffee = new VanillaSugar(rafCoffee); 
-            rafCoffee = new Cream(rafCoffee); 
+            rafCoffee = new VanillaSugar(rafCoffee);
+            rafCoffee = new Cream(rafCoffee);
             PrintBeverage(rafCoffee);
 
             // Mead raf
-            Beverage meadRaf = new Espresso();
+            Beverage meadRaf = factory.CreateBeverage(BeverageType.Espresso);
             meadRaf.Size = Size.VENDI;
-            meadRaf = new Honey(meadRaf); 
+            meadRaf = new Honey(meadRaf);
             meadRaf = new Cream(meadRaf);
             PrintBeverage(meadRaf);
 
             // Galao
-            Beverage galao = new Espresso();
+            Beverage galao = factory.CreateBeverage(BeverageType.Espresso);
             galao = new MilkFoam(galao);
             galao = new MilkFoam(galao);
             PrintBeverage(galao);
 
-            // Caffé affogato
-            Beverage caffeAffogato = new Espresso();
+            // Caffe affogato
+            Beverage caffeAffogato = factory.CreateBeverage(BeverageType.Espresso);
             caffeAffogato.Size = Size.GRANDE;
-            caffeAffogato = new IceCream(caffeAffogato); 
+            caffeAffogato = new IceCream(caffeAffogato);
             PrintBeverage(caffeAffogato);
 
             // Vienna coffee
-            Beverage viennaCoffee = new Espresso();
+            Beverage viennaCoffee = factory.CreateBeverage(BeverageType.Espresso);
             viennaCoffee = new Whip(viennaCoffee);
             viennaCoffee = new Whip(viennaCoffee);
             PrintBeverage(viennaCoffee);
 
             // Glace
-            Beverage glace = new Espresso();
+            Beverage glace = factory.CreateBeverage(BeverageType.Espresso);
             glace.Size = Size.GRANDE;
             glace = new IceCream(glace);
             PrintBeverage(glace);
 
             // Chocolate milk
-            Beverage chocolateMilk = new Chocolate();
+            Beverage chocolateMilk = factory.CreateBeverage(BeverageType.Chocolate);
             chocolateMilk.Size = Size.VENDI;
             chocolateMilk = new Milk(chocolateMilk);
             chocolateMilk = new Milk(chocolateMilk);
             PrintBeverage(chocolateMilk);
 
-            // Demi – crème
-            Beverage demiCreme = new Espresso();
+            // Demi - creme
+            Beverage demiCreme = factory.CreateBeverage(BeverageType.Espresso);
             demiCreme = new Cream(demiCreme);
             PrintBeverage(demiCreme);
 
             // Latte macchiato
-            Beverage latteMacchiato = new Espresso();
+            Beverage latteMacchiato = factory.CreateBeverage(BeverageType.Espresso);
             latteMacchiato.Size = Size.GRANDE;
             latteMacchiato = new SteamedMilk(latteMacchiato);
             latteMacchiato = new SteamedMilk(latteMacchiato);
@@ -162,14 +165,14 @@ namespace DecoratorPattern
             PrintBeverage(latteMacchiato);
 
             // Freddo
-            Beverage freddo = new Espresso();
+            Beverage freddo = factory.CreateBeverage(BeverageType.Espresso);
             freddo.Size = Size.VENDI;
             freddo = new Liqour(freddo);
             freddo = new Ice(freddo);
             PrintBeverage(freddo);
 
             // Frappuccino
-            Beverage frappuccino = new Espresso();
+            Beverage frappuccino = factory.CreateBeverage(BeverageType.Espresso);
             frappuccino.Size = Size.GRANDE;
             frappuccino = new Ice(frappuccino);
             frappuccino = new SteamedMilk(frappuccino);
@@ -177,25 +180,25 @@ namespace DecoratorPattern
             PrintBeverage(frappuccino);
 
             // Caramel frappuccino
-            Beverage caramelFrappuccino = new Espresso();
+            Beverage caramelFrappuccino = factory.CreateBeverage(BeverageType.Espresso);
             caramelFrappuccino = new Ice(caramelFrappuccino);
             caramelFrappuccino = new SteamedMilk(caramelFrappuccino);
             caramelFrappuccino = new Whip(caramelFrappuccino);
             caramelFrappuccino = new Cream(caramelFrappuccino);
-            caramelFrappuccino = new Syrup(caramelFrappuccino); 
+            caramelFrappuccino = new Syrup(caramelFrappuccino);
             PrintBeverage(caramelFrappuccino);
 
             // Frappe
-            Beverage frappe = new Espresso();
+            Beverage frappe = factory.CreateBeverage(BeverageType.Espresso);
             frappe.Size = Size.VENDI;
             frappe = new SteamedMilk(frappe);
             frappe = new IceCream(frappe);
             PrintBeverage(frappe);
 
             // Irish Coffee
-            Beverage irishCoffee = new Espresso();
+            Beverage irishCoffee = factory.CreateBeverage(BeverageType.Espresso);
             irishCoffee.Size = Size.VENDI;
-            irishCoffee = new Whiskey(irishCoffee); 
+            irishCoffee = new Whiskey(irishCoffee);
             irishCoffee = new Whip(irishCoffee);
             PrintBeverage(irishCoffee);
         }
