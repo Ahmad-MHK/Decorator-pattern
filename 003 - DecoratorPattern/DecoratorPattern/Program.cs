@@ -9,124 +9,94 @@ namespace DecoratorPattern
     {
         static void Main(string[] args)
         {
-            IBeverageFactory factory = new BeverageFactory();
-            IBeverageStore store = new DefaultBeverageStore(factory);
+            BeverageStore factory = new BeverageFactory();
 
             // Espresso
-            Beverage espresso = store.Order(BeverageType.Espresso, Size.GRANDE);
-            PrintBeverage(espresso);
+            Beverage espresso = factory.Order(BeverageType.Espresso, Size.GRANDE);
 
             // Doppio
-            Beverage doppio = store.Order(BeverageType.Doppio, Size.GRANDE);
-            PrintBeverage(doppio);
+            Beverage doppio = factory.Order(BeverageType.Doppio, Size.GRANDE);
 
             // Lungo
-            Beverage lungo = store.Order(BeverageType.Lungo, Size.TALL);
-            PrintBeverage(lungo);
+            Beverage lungo = factory.Order(BeverageType.Lungo, Size.TALL);
 
             // Macchiato
-            Beverage macchiato = store.Order(BeverageType.Macchiato, Size.VENDI);
-            PrintBeverage(macchiato);
+            Beverage macchiato = factory.Order(BeverageType.Macchiato, Size.VENDI);
 
             // Corretta
-            Beverage corretta = store.Order(BeverageType.Corretta);
-            PrintBeverage(corretta);
+            Beverage corretta = factory.Order(BeverageType.Corretta);
 
             // Con Panna
-            Beverage conPanna = store.Order(BeverageType.ConPanna, Size.VENDI);
-            PrintBeverage(conPanna);
+            Beverage conPanna = factory.Order(BeverageType.ConPanna, Size.VENDI);
 
             // Cappuccino
-            Beverage cappuccino = store.Order(BeverageType.Cappuccino, Size.GRANDE);
-            PrintBeverage(cappuccino);
+            Beverage cappuccino = factory.Order(BeverageType.Cappuccino, Size.GRANDE);
 
             // Americano
-            Beverage americano = store.Order(BeverageType.Americano, Size.VENDI);
-            PrintBeverage(americano);
+            Beverage americano = factory.Order(BeverageType.Americano, Size.VENDI);
 
             // Caffe Latte
-            Beverage caffeLatte = store.Order(BeverageType.CaffeLatte);
-            PrintBeverage(caffeLatte);
+            Beverage caffeLatte = factory.Order(BeverageType.CaffeLatte);
 
             // Flat White
-            Beverage flatWhite = store.Order(BeverageType.FlatWhite, Size.GRANDE);
-            PrintBeverage(flatWhite);
+            Beverage flatWhite = factory.Order(BeverageType.FlatWhite, Size.GRANDE);
 
             // Romana
-            Beverage romana = store.Order(BeverageType.Romana, Size.VENDI);
-            PrintBeverage(romana);
+            Beverage romana = factory.Order(BeverageType.Romana, Size.VENDI);
 
             // Marocchino
-            Beverage marocchino = store.Order(BeverageType.Marocchino);
-            PrintBeverage(marocchino);
+            Beverage marocchino = factory.Order(BeverageType.Marocchino);
 
             // Mocha
-            Beverage mocha = store.Order(BeverageType.Mocha, Size.GRANDE);
-            PrintBeverage(mocha);
+            Beverage mocha = factory.Order(BeverageType.Mocha, Size.GRANDE);
 
             // Bicerin
-            Beverage bicerin = store.Order(BeverageType.Bicerin, Size.VENDI);
-            PrintBeverage(bicerin);
+            Beverage bicerin = factory.Order(BeverageType.Bicerin, Size.VENDI);
 
             // Breve
-            Beverage breve = store.Order(BeverageType.Breve);
-            PrintBeverage(breve);
+            Beverage breve = factory.Order(BeverageType.Breve);
 
             // Raf coffee
-            Beverage rafCoffee = store.Order(BeverageType.RafCoffee, Size.GRANDE);
-            PrintBeverage(rafCoffee);
+            Beverage rafCoffee = factory.Order(BeverageType.RafCoffee, Size.GRANDE);
 
             // Mead raf
-            Beverage meadRaf = store.Order(BeverageType.MeadRaf, Size.VENDI);
-            PrintBeverage(meadRaf);
+            Beverage meadRaf = factory.Order(BeverageType.MeadRaf, Size.VENDI);
 
             // Galao
-            Beverage galao = store.Order(BeverageType.Galao);
-            PrintBeverage(galao);
+            Beverage galao = factory.Order(BeverageType.Galao);
 
             // Caffe affogato
-            Beverage caffeAffogato = store.Order(BeverageType.CaffeAffogato, Size.GRANDE);
-            PrintBeverage(caffeAffogato);
+            Beverage caffeAffogato = factory.Order(BeverageType.CaffeAffogato, Size.GRANDE);
 
             // Vienna coffee
-            Beverage viennaCoffee = store.Order(BeverageType.ViennaCoffee);
-            PrintBeverage(viennaCoffee);
+            Beverage viennaCoffee = factory.Order(BeverageType.ViennaCoffee);
 
             // Glace
-            Beverage glace = store.Order(BeverageType.Glace, Size.GRANDE);
-            PrintBeverage(glace);
+            Beverage glace = factory.Order(BeverageType.Glace, Size.GRANDE);
 
             // Chocolate milk
-            Beverage chocolateMilk = store.Order(BeverageType.ChocolateMilk, Size.VENDI);
-            PrintBeverage(chocolateMilk);
+            Beverage chocolateMilk = factory.Order(BeverageType.ChocolateMilk, Size.VENDI);
 
             // Demi - creme
-            Beverage demiCreme = store.Order(BeverageType.DemiCreme);
-            PrintBeverage(demiCreme);
+            Beverage demiCreme = factory.Order(BeverageType.DemiCreme);
 
             // Latte macchiato
-            Beverage latteMacchiato = store.Order(BeverageType.LatteMacchiato, Size.GRANDE);
-            PrintBeverage(latteMacchiato);
+            Beverage latteMacchiato = factory.Order(BeverageType.LatteMacchiato, Size.GRANDE);
 
             // Freddo
-            Beverage freddo = store.Order(BeverageType.Freddo, Size.VENDI);
-            PrintBeverage(freddo);
+            Beverage freddo = factory.Order(BeverageType.Freddo, Size.VENDI);
 
             // Frappuccino
-            Beverage frappuccino = store.Order(BeverageType.Frappuccino, Size.GRANDE);
-            PrintBeverage(frappuccino);
+            Beverage frappuccino = factory.Order(BeverageType.Frappuccino, Size.GRANDE);
 
             // Caramel frappuccino
-            Beverage caramelFrappuccino = store.Order(BeverageType.CaramelFrappuccino);
-            PrintBeverage(caramelFrappuccino);
+            Beverage caramelFrappuccino = factory.Order(BeverageType.CaramelFrappuccino);
 
             // Frappe
-            Beverage frappe = store.Order(BeverageType.Frappe, Size.VENDI);
-            PrintBeverage(frappe);
+            Beverage frappe = factory.Order(BeverageType.Frappe, Size.VENDI);
 
             // Irish Coffee
-            Beverage irishCoffee = store.Order(BeverageType.IrishCoffee, Size.VENDI);
-            PrintBeverage(irishCoffee);
+            Beverage irishCoffee = factory.Order(BeverageType.IrishCoffee, Size.VENDI);
         }
 
         static void PrintBeverage(Beverage beverage)

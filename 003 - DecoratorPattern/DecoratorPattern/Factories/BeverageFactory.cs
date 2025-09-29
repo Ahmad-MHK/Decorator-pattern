@@ -1,20 +1,21 @@
 using System;
 using DecoratorPattern.Beverages;
 using DecoratorPattern.Condiments;
+using DecoratorPattern.Stores;
 
 namespace DecoratorPattern.Factories
 {
-    internal class BeverageFactory : IBeverageFactory
+    internal class BeverageFactory : BeverageStore
     {
-        public Beverage CreateBeverage(BeverageType type, Beverage? baseBeverage = null)
+        public override Beverage CreateBeverage(BeverageType type)
         {
             return type switch
             {
                 // Basic beverages
-                BeverageType.Espresso => baseBeverage == null ? new Espresso() : new Espresso(baseBeverage),
-                BeverageType.Chocolate => baseBeverage == null ? new Chocolate() : new Chocolate(baseBeverage),
-                BeverageType.Water => baseBeverage == null ? new Water() : new Water(baseBeverage),
-                
+                BeverageType.Espresso => new Espresso(),
+                BeverageType.Chocolate => new Chocolate(),
+                BeverageType.Water => new Water(),
+
                 // Complex beverages (pre-made combinations)
                 BeverageType.Doppio => new Espresso(new Espresso()),
                 BeverageType.Lungo => new Water(new Espresso()),
